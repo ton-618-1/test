@@ -3,62 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Menu</title</title>
+    <title>MY GAME</title>
 
     <style>
-      body {
-        mardin:0;
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        font-family:Arial, sans-serif;
-        backgroud: #!111;
-        color: white;
-      }
+        * {
+            box-sizing: border-box;
+        }
 
-      .menu {
-        text-align:center;
-      }
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at center, #102040 0%, #050914 45%, #020308 100%);
+            color: white;
+        }
 
-      h1{
-        font-size:50px;
-        margin-bottom:40px;
-      }
+        /* Lưới công nghệ */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 200, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 200, 255, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 8s linear infinite;
+            pointer-events: none;
+        }
 
-      button{
-        display:block;
-        width:220px;
-        margin:15px auto;
-        padding:15px;
-        font-size:20px;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-      }
+        @keyframes gridMove {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(40px);
+            }
+        }
 
-      button:hover{
-        transform:scale(1.05);
-      }
-  </style>
+        .menu {
+            position: relative;
+            z-index: 2;
+            width: 380px;
+            padding: 45px;
+            text-align: center;
+
+            background: rgba(5, 12, 25, 0.75);
+            border: 1px solid rgba(0, 200, 255, 0.5);
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 30px rgba(0, 180, 255, 0.15),
+                inset 0 0 30px rgba(0, 150, 255, 0.05);
+
+            backdrop-filter: blur(10px);
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 6px;
+
+            color: #7eeaff;
+
+            text-shadow:
+                0 0 10px #00cfff,
+                0 0 25px #008cff;
+
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #6d8fa5;
+            font-size: 12px;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+
+            background: rgba(0, 100, 160, 0.12);
+            color: #bcefff;
+
+            border: 1px solid #008cff;
+            border-radius: 8px;
+
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 3px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            background: rgba(0, 180, 255, 0.2);
+
+            color: white;
+
+            box-shadow:
+                0 0 10px #00aaff,
+                0 0 25px rgba(0, 170, 255, 0.5);
+
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .status {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #4d7487;
+            letter-spacing: 2px;
+        }
+
+        .status span {
+            color: #00ffae;
+        }
+
+        /* Góc trang trí */
+        .corner {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border-color: #00aaff;
+            opacity: 0.6;
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+            border-top: 2px solid;
+            border-left: 2px solid;
+        }
+
+        .top-right {
+            top: 20px;
+            right: 20px;
+            border-top: 2px solid;
+            border-right: 2px solid;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-bottom: 2px solid;
+            border-left: 2px solid;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-bottom: 2px solid;
+            border-right: 2px solid;
+        }
+    </style>
 </head>
 
 <body>
+
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+
     <div class="menu">
-        <h1>MY GAME</h1>
-        <button onclick="playGame()">PLAY</button>
-        <button onclick="settings()">SETTINGS</button>
-        <button onclick="exitGame()">EXIT</button>
+
+        <div class="logo">MY GAME</div>
+
+        <div class="subtitle">
+            SYSTEM ONLINE
+        </div>
+
+        <button onclick="playGame()">
+            ▶ PLAY
+        </button>
+
+        <button onclick="settings()">
+            ⚙ SETTINGS
+        </button>
+
+        <button onclick="credits()">
+            ◈ CREDITS
+        </button>
+
+        <div class="status">
+            ● <span>ONLINE</span> &nbsp; | &nbsp; VERSION 1.0
+        </div>
+
     </div>
+
     <script>
-      function playGame(){
-          window.loction.href="game.html";
-      }
-      function settings(){
-          alert("Đang mở Settings...");
-      }
-      function exitGame(){
-          alert();
-      }
-``</script>
+        function playGame() {
+            window.location.href = "game.html";
+        }
+
+        function settings() {
+            alert("SETTINGS");
+        }
+
+        function credits() {
+            alert("MY GAME\nCreated by TON-618-1");
+        }
+    </script>
+
 </body>
 </html>
