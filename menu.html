@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Menu</title</title>
 
+    <style>
+      body {
+        mardin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        font-family:Arial, sans-serif;
+        backgroud: #!111;
+        color: white;
+      }
+
+      .menu {
+        text-align:center;
+      }
+
+      h1{
+        font-size:50px;
+        margin-bottom:40px;
+      }
+
+      button{
+        display:block;
+        width:220px;
+        margin:15px auto;
+        padding:15px;
+        font-size:20px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+      }
+
+      button:hover{
+        transform:scale(1.05);
+      }
+  </style>
+</head>
+
+<body>
+    <div class="menu">
+        <h1>MY GAME</h1>
+        <button onclick="playGame()">PLAY</button>
+        <button onclick="settings()">SETTINGS</button>
+        <button onclick="exitGame()">EXIT</button>
+    </div>
+    <script>
+      function playGame(){
+          window.loction.href="game.html";
+      }
+      function settings(){
+          alert("Đang mở Settings...");
+      }
+      function exitGame(){
+          alert();
+      }
+``</script>
+</body>
+</html>
